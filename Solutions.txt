@@ -1,0 +1,1275 @@
+;/---------- SORU 1 ----------/;
+;	org 00h
+;	sjmp START
+;START: 
+;	mov r0,#10h
+;	mov a,#10h
+;X1: 
+;	mov @r0,a
+;	dec a
+;	djnz r0,X1
+;X:  sjmp X
+;	end
+
+;/---------- SORU 2 ----------/;
+;	org 00h
+;	sjmp START
+;START: 
+;	mov r0,#10h
+;	mov a,#10h
+;X1: 
+;	mov @r0,a   
+;	dec a
+;	djnz r0,X1
+;	
+;	mov r0,#10h
+;X2: 			 
+;	add a,@r0
+;	djnz r0,X2
+;	mov p0,a
+;X:  sjmp X
+;	end
+
+
+;/---------- SORU 3 ----------/;
+;	org 00h
+;	sjmp START
+;START: 
+;	mov r0,#05h
+;	mov a,#01h
+;X1: 
+;	mov b,r0
+;	mul AB
+;	djnz r0,X1
+;	mov p0,a
+;X:  sjmp X
+;	end
+
+
+;/---------- SORU 4 ----------/;
+;	org 00h
+;	sjmp START
+;START: 
+;	mov r0,#10d
+;X1: 
+;	add a,r0
+;	djnz r0,X1
+;	mov p0,a
+;X:  sjmp X
+;	end
+
+
+
+;/---------- SORU 5 ----------/;
+;	org 00h
+;	sjmp START
+;START: 
+;	mov r0,#12h
+;	mov r1,#34h
+
+;	mov a,#0F0h
+;	anl a,00h
+;	swap a
+;	add a,r1
+;	anl a,#0Fh
+;	mov p0,a
+
+;	mov a,#0F0h
+;	anl a,01h
+;	swap a
+;	add a,r0
+;	anl a,#0Fh
+;	mov p1,a
+;X:  sjmp X
+;	end
+;	
+
+
+;/////////////////////////////////// 2'nd HOMEWORK ///////////////////////////////////
+
+
+;/---------- SORU 6 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#04h
+;	mov a,#33h
+;Label1:
+;	mov @r0,a
+;	inc a
+;	djnz r0,Label1
+;X: 	sjmp X
+;	end
+
+;/---------- SORU 7 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#04h
+;	mov a,#33h
+;Label1:
+;	mov @r0,a
+;	inc a
+;	djnz r0,Label1
+;	
+;	mov r0,#04h
+;	mov r5,#00h
+;Label2:
+;	mov a,#0fh
+;	anl a,@r0
+;	add a,r5
+;	mov r5,a
+;	djnz r0,Label2
+;	mov p0,r5
+;	
+;	
+;X: 	sjmp X
+;	end
+
+;/---------- SORU 8 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#04h
+;	mov a,#33h
+;Label1:
+;	mov @r0,a
+;	inc a
+;	djnz r0,Label1
+;	
+;	mov r0,#04h
+;	mov r5,#00h
+;Label2:
+;	mov a,#0f0h
+;	anl a,@r0
+;	add a,r5
+;	mov r5,a
+;	djnz r0,Label2
+;	mov a,r5
+;	swap a
+;	mov p0,a
+;X: 	sjmp X
+;	end
+
+;/---------- SORU 9 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#04h
+;	mov a,#33h
+;Label1:
+;	mov @r0,a
+;	inc a
+;	djnz r0,Label1
+;	
+;	mov r0,#04h
+;	mov r5,#00h
+;Label2:
+;	mov a,#0f0h
+;	anl a,@r0
+;	swap a
+;	add a,r5
+;	mov r5,a
+;	dec r0
+;	mov a,#0fh
+;	anl a,@r0
+;	add a,r5
+;	mov r5,a
+;	djnz r0,Label2
+;	mov p0,r5
+;	
+;	
+;X: 	sjmp X
+;	end
+
+;/---------- SORU 10 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,#01h
+;Label1:
+;	mov b,#02h
+;	jb p1.0,stop
+;	jz Restart
+;	mov p3,a
+;	mul ab
+;	sjmp Label1
+;stop:
+;	mov p3,00h
+;	sjmp Label1
+;Restart:
+;	mov a,#01h
+;	sjmp Label1
+;	end
+
+
+
+;/---------- SORU 11 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,#01h
+;Label1:
+;	jb p1.0,stop
+;	mov p3,a
+;	rl a
+;	sjmp Label1
+;stop:
+;	mov p3,00h
+;	sjmp Label1
+;	
+;	end
+;		
+;/---------- SORU 12 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,#01h
+;Label1:
+;	jnb p1.0,LeftToRight
+;	jnb p1.1,RightToLeft
+;	sjmp Label1
+;LeftToRight:
+;	mov p3,a
+;	rl a
+;	sjmp Label1
+;RightToLeft:
+;	mov p3,a
+;	rr a
+;	sjmp Label1
+;	
+;	end
+
+
+;/---------- SORU 13 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,#05h
+;	mov r0,#04h
+;Label1:
+;	mov b,r0
+;	mul ab
+;	dec r0
+;	CJNE r0,#00h,Label1
+;	mov p0,a
+;	
+;X: 	sjmp X
+;	end
+
+;/---------- SORU 14 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,#4fh
+;	mov r0,#1fh
+;Label1:
+;	mov @r0,a
+;	dec r0
+;	dec a
+;	CJNE r0,#0fh,Label1
+;	
+;X: 	sjmp X
+;	end
+;		
+;		
+;/---------- SORU 15 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#1fh
+;	mov a,#70d
+;	mov r1,#02d
+;Label1:
+;	mov @r0,a
+;	subb a,r1
+;	dec r0
+;	CJNE r0,#0fh,Label1
+;	
+;X: 	sjmp X
+;	end
+;		
+;/---------- SORU 16 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,p1
+;	anl 00h,#0fh
+;Label1:
+;	add a,r0
+;	djnz r0,Label1
+;	mov p3,a
+;X: 	sjmp X
+;	end
+;		
+;/---------- SORU 17 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,p1
+;	anl 00h,#0fh
+;	acall AddingFunction
+;	mov p3,a
+;	sjmp stop
+;	
+;AddingFunction:
+;Label1:
+;	add a,r0
+;	djnz r0,Label1
+;	ret
+;	
+;stop:	
+;	end	
+;	
+;	
+;/---------- SORU 18 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,p0
+;	mov r0,p3
+;	subb a,r0
+;	jz FirstLed
+;	mov p1,#04h
+;	sjmp start
+;	
+;FirstLed:
+;	mov p1,#02h
+;	sjmp start
+;	
+;	end	
+;		
+;/---------- SORU 19 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov a,p2
+;	mov r0,p3
+;	subb a,r0
+;	jnc Positive
+;	mov p1,#04h
+;	sjmp start
+;	
+;Positive:
+;	mov p1,#02h
+;	sjmp start
+;	
+;	end	
+
+
+;/---------- SORU 20 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#05h ; XL
+;	mov r1,#11h ; XH
+;	mov r2,#0Ah ; YL
+;	mov r3,#08h ; YH
+;	
+;	clr c
+;	mov a,r0
+;	subb a,r2
+;	mov r0,a
+;	
+;	mov a,r1
+;	subb a,r3
+;	mov r2,a
+;	jnc Positive
+;	mov p1,#04h
+;	sjmp start
+;	
+;Positive:
+;	mov p1,#02h
+;	sjmp start
+;	
+;	end	
+
+
+;/---------- SORU 21 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,p3 
+;	anl 00h,#0fh	
+;	
+;	jb p1.0,BT1
+;	jb p1.1,BT2
+;	sjmp start
+;	
+;BT1:
+;	mov a,r0
+;	mov b,#02h
+;	mul ab
+;	mov p2,a
+;	sjmp start
+;	
+;BT2:
+;	mov a,r0
+;	mov b,#03h
+;	mul ab
+;	mov p2,a
+;	sjmp start
+;	
+;	end	
+
+
+;/---------- SORU 22/23 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,p3 
+;	anl 00h,#0fh	
+;	
+;	jb p1.0,BT1
+;	jb p1.1,BT2
+;	sjmp start
+;	
+;BT1:
+;	acall BTN1
+;	sjmp start
+;	
+;	
+;BT2:
+;	acall BTN2
+;	sjmp start
+;	
+;BTN1:
+;	mov a,r0
+;	mov b,#02h
+;	mul ab
+;	mov p2,a
+;	ret
+;	
+;BTN2:
+;	mov a,r0
+;	mov b,#03h
+;	mul ab
+;	mov p2,a
+;	ret
+;	
+;	end	
+
+
+;/---------- SORU 24 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#04h 
+;	mov a,#33h
+
+;	sjmp start
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+;		
+;		
+;/---------- SORU 25 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#04h 
+;	mov a,#08h	
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	mov p0,a
+
+;	sjmp start
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+
+;/---------- SORU 26 ----------/;
+
+; 					Step a
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#10d 
+;	mov r1,#09h 
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	mov p0,a
+;	dec r1
+;	djnz r0,label1
+
+;	sjmp start
+
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+;		
+;		
+; 					Step b
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#10d 
+;	mov r1,#00h 
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	mov p0,a
+;	inc r1
+;	djnz r0,label1
+
+;	sjmp start
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+
+
+
+;/---------- SORU 27 ----------/;
+
+; 					Step a
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#0ah
+;	mov r1,#09h 
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	mov p0,a
+;	dec r0
+;	dec r1
+;	cjne r0,#00h,label1
+
+;	sjmp start
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+
+
+; 					Step b
+;	org 00h
+;	sjmp start
+;start:
+;	mov r1,#00h 
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	mov p0,a
+;	inc r1
+;	cjne r1,#0ah,label1
+
+;	sjmp start
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+
+
+
+;/---------- SORU 28 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r1,#00h
+;search:
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	cjne a,#06d,SecondLed
+;	mov p0,#02h
+;Finish:	
+;sjmp Finish
+
+;SecondLed:
+;	inc r1
+;	mov p0,#04h
+;	sjmp search
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+;	
+;	
+;/---------- SORU 29 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#5d 
+;	mov r1,#00h 
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	mov p0,a
+;	inc r1
+;	inc r1
+;	djnz r0,label1
+
+;	sjmp start
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+;		
+
+;/---------- SORU 30 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#5d 
+;	mov r1,#00h
+;	mov r2,#00h
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	add a,r2
+;	mov r2,a
+;	inc r1
+;	inc r1
+;	djnz r0,label1
+;	mov p0,a
+;	sjmp start
+;	
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+
+
+;/---------- SORU 31 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+
+;	mov r0,#5d 
+;	mov r1,#00h
+;	mov r6,#00h
+;	mov r7,#00h
+;label1:	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	add a,r6
+;	mov r6,a
+;	inc r1
+;	
+;	mov a,r1
+;	mov dptr,#DataBAse
+;	movc a,@a+dptr
+;	add a,r7
+;	mov r7,a
+;	inc r1
+;	
+;	djnz r0,label1
+;	
+;	mov a,r7
+;	subb a,r6
+;	jnc Positive
+;	mov p0,#04h
+;	sjmp endd
+;	
+;Positive:
+;	mov p0,#02h
+;	sjmp endd
+
+;endd:	sjmp endd
+;DataBAse:  db	19d,8d,17d,6d,15d,4d,13d,2d,11d,0d
+;	end	
+
+
+
+
+
+;/---------- SORU 33 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov p0,#00h
+;Label1:	
+;	jnb p1.0,BT1
+;	sjmp Label1
+;	
+;BT1:
+;	SETB p0.0
+;	sjmp Label1
+;	
+
+;	end	
+
+;/---------- SORU 34 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov p0,#00h
+;Label1:	
+;	jnb p1.0,BT1
+;	jnb p1.1,BT2
+;	sjmp Label1
+;	
+;BT1:
+;	SETB p0.0
+;	CLR p0.1
+;	sjmp Label1
+;	
+;BT2:
+;	SETB p0.1
+;	CLR p0.0
+;	sjmp Label1
+;	end	
+;		
+;/---------- SORU 35 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov p0,#00h
+;	mov r0,#00h
+;Label1:	
+;	jnb p1.0,BT1
+;	CJNE r0,#02h,Label1
+;	setb p0.0
+;	sjmp Label1
+;	
+;BT1:
+;	inc r0
+;	sjmp Label1
+;	
+;	end	
+;	
+
+
+;/---------- SORU 36 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov p0,#00h
+;Label1:	
+;	jnb p1.0,BT1
+;	sjmp Label1
+;	
+;BT1:
+;	jnb p1.1,BT2
+;	sjmp Label1
+;	
+;BT2:
+;	SETB p0.0
+;	sjmp Label1
+;	end	
+;		
+;		
+;/---------- SORU 37 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+
+;	mov b,#00h
+;	mov r0,#11h
+;	mov r1,#21h
+;	mov r2,#03h
+;	mov r3,#03h
+;	mov r4,#00h
+;	
+;FirstMatrixRows:
+;	inc r4
+;	mov r5,#01h
+;	mov r3,#03h
+;FirstMatrixCols:
+;	mov b,r4
+;	mov a,r5
+;	mul ab
+;	mov @r0,a
+;	inc r5
+;	inc r0	
+;	djnz r3,FirstMatrixCols
+;	djnz r2,FirstMatrixRows
+;	
+;	
+;	mov r2,#03h
+;	mov r4,#04h
+;SecondMatrixRows:
+;	dec r4
+;	mov r5,#03h
+;	mov r3,#03h
+;SecondMatrixCols:
+;	mov b,r4
+;	mov a,r5
+;	mul ab
+;	mov @r1,a
+;	dec r5
+;	inc r1	
+;	djnz r3,SecondMatrixCols
+;	djnz r2,SecondMatrixRows
+;	
+
+;	mov r1,#21h
+;	mov r2,#03h
+;	mov r4,#31h
+;	mov r5,#11h
+;ResultMatrixRows:
+;	mov r3,#03h
+;ResultMatrixCols:
+;	mov 00h,r5
+;	mov a,@r0
+;	add a,@r1
+;	mov 00h,r4
+;	mov @r0,a
+;	inc r1
+;	inc r4
+;	inc r5	
+;	djnz r3,ResultMatrixCols
+;	djnz r2,ResultMatrixRows
+;	
+;	
+;endd:	sjmp endd	
+;	end	
+
+
+;/---------- SORU 38 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	mov r0,#49h
+;	mov r1,#160d
+;	mov r2,#2d
+;	mov r3,#2d
+;	
+;Label1:
+;	mov @r0,01h
+;	mov a,r1
+;	mov b,r3
+;	div ab
+;	mov r1,a
+;	
+;	dec r0
+;	mov @r0,02h
+;	mov a,r2
+;	mov b,r3
+;	mul ab
+;	mov r2,a
+;	
+;	dec r0
+;	cjne r0,#3fh,Label1
+;	
+;	mov r0,#39h
+;	mov r1,#160d
+;	mov r2,#2d
+;	mov r3,#2d
+;	
+;Label2:
+;	mov @r0,01h
+;	mov a,r1
+;	mov b,r3
+;	div ab
+;	mov r1,a
+;	
+;	dec r0
+;	mov @r0,02h
+;	mov a,r2
+;	mov b,r3
+;	mul ab
+;	mov r2,a
+;	
+;	dec r0
+;	cjne r0,#2fh,Label2
+
+
+;	mov 50h,#16d
+;Loop1:
+;	mov r0,#30h
+
+;Loop2:
+;	mov 01h,r0
+;	mov 02h,@r1
+;	inc r0 
+;	mov a,@r0
+;	subb a,r2
+;	jnc Continue2
+;	mov a,@r0
+;	xch A,@r1
+;	mov @r0,a
+;	cjne r0,#3ah,Loop2
+;	sjmp Continue1
+;	
+;Continue2:
+;	cjne r0,#3ah,Loop2
+;	sjmp Continue1
+;	
+;Continue1:
+;	djnz 50h,Loop1
+;	
+
+;endd:	sjmp endd	
+;	end	
+
+
+;/---------- SORU 39 ----------/;
+
+;S1 equ P1.0
+;S2 equ P1.1
+;Pump1 equ P2.0
+;Pump2 equ p2.1
+;Pmp1PrblmSen equ P1.2
+;Pmp2PrblmSen equ P1.3
+;PrblmLamp equ P3.0
+;PrblmAlarm equ P3.1
+;	
+;	org 00h
+;	sjmp start
+;start:
+
+;	clr PrblmLamp	
+;	clr PrblmAlarm
+;	mov p2,#00h
+;	
+;Label1:
+;	jnb S1,full
+;	sjmp Label1
+;	
+;full:		
+;	jnb Pmp1PrblmSen,Lump
+;	setb Pump1
+;X1:	jb S2, X1
+;	clr Pump1
+;	sjmp Label1
+;	
+;Lump:	
+;	jnb Pmp2PrblmSen,Alarm
+;	setb PrblmLamp
+;	setb Pump2
+;X2:	jb S2, X2
+;	clr Pump2
+;	clr PrblmLamp
+;	sjmp Label1
+;	
+;Alarm:
+;	setb PrblmAlarm
+;	clr PrblmAlarm
+;	sjmp Label1
+;	
+;	
+;endd:	sjmp endd	
+;	end	
+
+;/---------- SORU 40 ----------/;
+
+;YOrtaBtn equ P1.0
+;YArkaBtn equ P1.1
+;SfrOrtaBtn equ P1.2
+;SfrArkaBtn equ P1.3
+;SfrOnBtn equ P1.4
+;	
+;OrtaKapiLmb equ P2.0
+;ArkaKapiLmb equ p2.1	
+;PanelArkaLmb equ P2.2
+;PanelOrtaLmb equ p2.3
+;PanelOnLmb equ p2.4
+;	
+;OnKapi equ P3.0
+;OrtaKapi equ p3.1
+;ArkaKapi equ P3.2
+
+;	
+;	org 00h
+;	sjmp start
+;start:
+;	
+;	mov p2,#00h
+;	mov p3,#00h
+;Label1:	
+;	jnb SfrOnBtn,OnTaraf
+;	jnb YOrtaBtn,OrtaTaraf
+;	jnb YArkaBtn,ArkaTaraf
+;	sjmp label1
+;	
+;OnTaraf:
+;	setb OnKapi
+;	setb PanelOnLmb
+;X1:	jb SfrOnBtn,X1
+;	clr OnKapi
+;	clr PanelOnLmb
+;	sjmp label1
+;	
+;OrtaTaraf:
+;	setb PanelOrtaLmb
+;	setb OrtaKapiLmb
+;X2:	jb SfrOrtaBtn,X2
+;	setb OrtaKapi
+;X3:	jb SfrOrtaBtn,X3
+;	clr OrtaKapi
+;	clr PanelOrtaLmb
+;	clr OrtaKapiLmb
+;	sjmp label1
+;	
+;ArkaTaraf:
+;	setb PanelArkaLmb
+;	setb ArkaKapiLmb
+;X4:	jb SfrArkaBtn,X4
+;	setb ArkaKapi
+;X5:	jb SfrArkaBtn,X5
+;	clr ArkaKapi
+;	clr PanelArkaLmb
+;	clr ArkaKapiLmb
+;	sjmp label1
+;	
+;endd:	sjmp endd	
+;	end	
+
+
+;/---------- SORU 41 ----------/;
+;	
+;	org 00h
+;	sjmp start
+;start:
+;	mov tmod,#01h
+;	;1/1.2us = 833333
+;	;833333/65535 = 12.71
+;	;0.71*65535 = 18622
+;	mov dptr,#18622d
+;X:	jb p0.0,X
+;	setb tr0
+;	setb p1.0
+;continue:
+;	mov th0,dph
+;	mov tl0,dpl
+;	mov r0,#13d
+;bekle: 
+;	jnb tf0,bekle
+;	clr tf0
+;	djnz r0,bekle
+;	cpl p1.0
+;	sjmp continue
+
+;	
+;endd:	sjmp endd	
+;	end	
+
+;;/---------- SORU 42 ----------/;
+;	
+;	org 00h
+;	sjmp start
+;start:
+;	mov tmod,#01h
+;	;1/1.2us = 833333
+;	;833333/65535 = 12.71
+;	;0.71*65535 = 18622
+;	mov dptr,#18622d
+;	clr p1.0
+;X:	jb p0.0,X
+;X1:	jnb p0.0,X1
+;	setb tr0
+;	setb p1.0
+;continue:
+;	mov th0,dph
+;	mov tl0,dpl
+;	mov r0,#13d
+;bekle: 
+;	jnb tf0,bekle
+;	clr tf0
+;	djnz r0,bekle
+;	cpl p1.0
+;	sjmp continue
+;	
+;endd:	sjmp endd	
+;	end	
+
+;;/---------- SORU 44 ----------/;
+;sfr T2CON   = 0xC8;     /* Timer 2 Control */
+;sfr TL2     = 0xCC;     /* Timer 2 Low Byte */
+;sfr TH2     = 0xCD;     /* Timer 2 High Byte */
+;sbit CP_RL2= 0xC8;      /* 0=Reload, 1=Capture select */
+;sbit C_T2 = 0xC9;       /* 0=Timer, 1=Counter */
+;sbit TR2  = 0xCA;       /* 0=Stop timer, 1=Start timer */
+;sbit EXEN2= 0xCB;       /* Timer 2 external enable */
+;sbit TCLK = 0xCC;       /* 0=Serial clock uses Timer 1 overflow, 1=Timer 2 */
+;sbit RCLK = 0xCD;       /* 0=Serial clock uses Timer 1 overflow, 1=Timer 2 */
+;sbit EXF2 = 0xCE;       /* Timer 2 external flag */
+;sbit TF2  = 0xCF;       /* Timer 2 overflow flag */
+;	
+;	org 00h
+;	sjmp start
+;start:
+;	mov t2con,#04h
+;	;0.8/1.2us = 666666.7
+;	;666666.7/65535 = 10.17
+;	;0.17*65535 = 54218
+;	mov dptr,#54218
+;	mov p0,#00h
+;	setb tr2
+;continue:
+;	mov th2,dph
+;	mov tl2,dpl
+;	mov r0,#11d
+;bekle: 
+;	jnb tf2,bekle
+;	clr tf2
+;	djnz r0,bekle
+;	inc p0
+;	sjmp continue
+;	
+;endd:	sjmp endd	
+;	end	
+
+
+;;/---------- SORU 45 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	
+;	mov r0,#00h
+;Loop:
+;	mov p0,r0
+;	inc r0
+;	cjne r0,#10d,Loop
+;	sjmp start
+;	
+;endd:	sjmp endd	
+;	end			
+
+
+;;/---------- SORU 46 ----------/;
+
+;	org 00h
+;	sjmp start
+;start:
+;	
+;	mov a,#0f0h
+;	mov p0,#00h	
+;Loop:
+;	mov p0,a	
+;	rr a
+;	sjmp Loop
+;	
+;endd:	sjmp endd	
+;	end			
+
+
+;;/---------- SORU 47 ----------/;
+
+;Kat4Btn equ P3.0
+;Kat3Btn equ p3.1
+;Kat2Btn equ P3.2
+;Kat1Btn equ P3.3
+
+;;1/1.2us = 833333
+;;833333/65535 = 12.71
+;;0.71*65535 = 18622
+;	
+;	org 00h
+;	sjmp start
+;start:
+;	mov tmod,#01h
+;	mov dptr,#18622d
+;	mov r0,#01h	 ; Current Location
+;	mov r1,#01h	 ; Ordered Location
+;	mov r2,#01h  ; For showing the value in p0
+;	mov p1,r0
+;	mov p0,r0
+;	
+;ReadKat:
+;	jnb Kat1Btn,KAT1
+;	jnb Kat2Btn,KAT2
+;	jnb Kat3Btn,KAT3
+;	jnb Kat4Btn,KAT4
+;	sjmp ReadKat
+;	
+;KAT1:
+;	mov r1,#01h
+;	cjne r0,#01h,DecreaseKat
+;	sjmp ReadKat
+;	
+;KAT2:
+;	mov r1,#02h
+;	mov a,r0
+;	subb a,r1
+;	jc IncreaseKat
+;	sjmp DecreaseKat
+;	
+;KAT3:
+;	mov r1,#03h
+;	mov a,r0
+;	subb a,r1
+;	jc IncreaseKat
+;	sjmp DecreaseKat
+
+
+;KAT4:	
+;	mov r1,#04h
+;	cjne r0,#04h,IncreaseKat
+;	sjmp ReadKat
+
+;IncreaseKat:
+;	clr c
+;Continue2:
+;	mov p1,r0
+;	mov p0,r2
+;	acall delay
+;	
+;	mov a,r2 ;
+;	rl a	 ; for showing on LEDs
+;	mov r2,a ;
+;	
+;	inc r0	 ;for showing on Display
+;	mov a,r1 ; 
+;	
+;	cjne a,00h,Continue2
+;	mov p1,r0
+;	mov p0,r2
+;	sjmp ReadKat
+;	
+;DecreaseKat:
+;Continue1:
+;	mov p1,r0
+;	mov p0,r2
+;	acall delay
+;	mov a,r2
+;	rr a
+;	mov r2,a
+;	dec r0
+;	mov a,r1
+;	cjne a,00h,Continue1
+;	mov p1,r0
+;	mov p0,r2
+;	sjmp ReadKat
+;	
+;Delay:	
+;	setb tr0
+;continue:
+;	mov th0,dph
+;	mov tl0,dpl
+;	mov r5,#13d
+;bekle: 
+;	jnb tf0,bekle
+;	clr tf0
+;	djnz r5,bekle
+;	clr tr0
+;	ret
+
+;endd:	sjmp endd	
+;	end	
+
